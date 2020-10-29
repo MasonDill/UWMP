@@ -5,12 +5,27 @@
     $indexNums = $_POST["indexes"];
 
     $usein = $user;
-    $qry = "SELECT * FROM matches WHERE Username='$user'";
+    $rol = "";
+    $oRol = "";
+    $qry = "SELECT * FROM contacts WHERE Username='$user'";
     $rslt = $conn->query($qry);
     if($row = $rslt -> fetch_array(MYSQLI_NUM))
+    {
         $user = $user;
+        $rol = $row[5];
+    }
     else // adjust to a nonacceptaple input value
         $user = "USERNAME NOT FOUND!";
+
+   $uup = "SELECT * FROM matches WHERE Username='$user'";
+    $rtlsl = $conn->query($uup);
+    if($bigFun = $rtlsl -> fetch_array(MYSQLI_NUM))
+    {
+        $user = $user;
+    }
+    else
+        $user = "USERNAME NOT FOUND!";
+
 
     $seq = "SELECT * FROM contact_info where username='$user'";
     $rt = $conn->query($seq);
@@ -32,12 +47,17 @@
     $mat1 = "Add as match";
     $mat2 = "Add as match";
     $mat3 = "Add as match";
+    $bio2 = "             ";
+    $bio3 = "             ";
+    $bio4 = "             ";
+    $bio5 = "             ";
+    $bio1 = "             ";
 
 
-    unset($row[0]);
+    unset($bigFun[0]);
     if($row != null){
-        $excludeAll = join("','", $row);
-        $ids = join("','", $row);
+        $excludeAll = join("','", $bigFun);
+        $ids = join("','", $bigFun);
     }
     else{
         $ids = " ";
@@ -55,10 +75,13 @@
         $result = $conn->query($sql);
         while($match = $result -> fetch_array(MYSQLI_NUM))
         {
+          $oRol = $match[5];
           $mInfo = "SELECT * FROM contact_info where username='$match[1]'";
           $ttl = $conn->query($mInfo);
 
           $consectiveM = 0;
+
+
           while($c_info = $ttl -> fetch_array(MYSQLI_NUM))
           {
             $i = 0;
@@ -134,12 +157,13 @@
         } //call unique here
         $strongMatches = array_unique($strongMatches);
 
+
+        //adds in remaining weak matches
         $rrr = "SELECT * FROM contacts where username NOT IN ('$user')";
         $rbr = $conn->query($rrr);
-
         while($con = $rbr -> fetch_array(MYSQLI_NUM))
         {
-          if(!in_array($con[1], $strongMatches) && $con[1] != null)
+          if(!in_array($con[1], $strongMatches) && $con[1] != null && strcmp($con[5], $rol) != 0)
           {
             array_push($strongMatches, $con[1]);
           }
@@ -162,6 +186,7 @@
       $qio = "SELECT * FROM contacts";
       $rere = $conn->query($qio);
       while($outputs = $rere->fetch_array(MYSQLI_NUM)){
+        $oppo = "SELECT * FROM contact_info where username='$outputs[1]'";
       if ( ! isset($strongMatches[1]))
       {
         $strongMatches[1] = $strongMatches[1];
@@ -169,19 +194,59 @@
       }
 
       if(strcmp($outputs[1], $strongMatches[$indexNums]) == 0)
+      {
           $first = $outputs;
+          if($bio = $conn->query($oppo))
+          while($bm = $bio->fetch_array(MYSQLI_NUM))
+          {
+            array_push($first, $bm[1]); // add school
+            array_push($first, $bm[count($bm) - 1]); // add bio
+          }
+      }
 
       if(strcmp($outputs[1], $strongMatches[$indexNums+1+$specialAdd]) == 0)
+      {
           $second = $outputs;
+          if($bio = $conn->query($oppo))
+          while($bm = $bio->fetch_array(MYSQLI_NUM))
+          {
+            array_push($second, $bm[1]);
+            array_push($second, $bm[count($bm) - 1]);
+          }
+      }
 
       if(strcmp($outputs[1], $strongMatches[$indexNums+2+$specialAdd]) == 0)
+      {
           $third = $outputs;
+          if($bio = $conn->query($oppo))
+          while($bm = $bio->fetch_array(MYSQLI_NUM))
+          {
+            array_push($third, $bm[1]);
+            array_push($third, $bm[count($bm) - 1]);
+          }
+      }
 
       if(strcmp($outputs[1], $strongMatches[$indexNums+3+$specialAdd]) == 0)
+      {
           $fourth = $outputs;
+          if($bio = $conn->query($oppo))
+          while($bm = $bio->fetch_array(MYSQLI_NUM))
+          {
+            array_push($fourth, $bm[1]);
+           array_push($fourth, $bm[count($bm) - 1]);
+          }
+      }
 
       if(strcmp($outputs[1], $strongMatches[$indexNums+4+$specialAdd]) == 0)
+      {
           $fifth = $outputs;
+          if($bio = $conn->query($oppo))
+          while($bm = $bio->fetch_array(MYSQLI_NUM))
+          {
+            array_push($fifth, $bm[1]);
+            array_push($fifth, $bm[count($bm) - 1]);
+          }
+      }
       }
 
       $usein = "";
@@ -261,7 +326,7 @@
   <br><br><br>
 
     <div class="container-fluid w-75">
-        <p>Your Matches: <?php echo $NoMatchesFlagForText ?></p>
+        <p>Your Matches: <?php echo $NoMatchesFlagForText; ?></p>
         <div id="card-container"></div>
         <br>
           <div class="row" id="rowtwo">
@@ -288,31 +353,41 @@
     
     var tasks = [{
         "title": "<?php echo $first[2].' '.$first[3] ?>",
-        "color": "<?php echo implode($first) ?>",
+        "bio": "<?php if(count($first) > 7) echo $first[count($first) - 1]; ?>",
+        "school" : "<?php if(count($first) > 6) echo $first[7]; ?>",
+        "contact" : "<?php echo $first[4]; if($first[6] != null) echo ' '.$first[6]; ?>", 
         "value": "<?php echo $first[1] ?>",
         "isMatched": "<?php echo $mat1 ?>",
     },
     {
         "title": "<?php echo $second[2].' '.$second[3] ?>",
-        "color": "<?php echo implode($second) ?>",
+        "bio": "<?php if(count($second) > 7) echo $second[count($second) - 1]; ?>",
+        "school" : "<?php if(count($second) > 6) echo $second[7]; ?>",
+        "contact" : "<?php echo $second[4]; if($second[6] != null) echo ' '.$second[6]; ?>", 
         "value": "<?php echo $second[1] ?>",
         "isMatched": "<?php echo $mat2 ?>",
     },
     {
         "title": "<?php echo $third[2].' '.$third[3] ?>",
-        "color": "<?php echo implode($third) ?>",
+        "bio": "<?php if(count($third) > 7) echo $third[count($third) - 1]; ?>",
+        "school" : "<?php if(count($third) > 6) echo $third[7]; ?>",
+        "contact" : "<?php echo $third[4]; if($third[6] != null) echo ' '.$third[6]; ?>", 
         "value": "<?php echo $third[1] ?>",
         "isMatched": "<?php echo $mat3 ?>",
     },
     {
         "title": "<?php echo $fourth[2].' '.$fourth[3] ?>",
-        "color": "<?php echo implode($fourth) ?>",
+        "bio": "<?php if(count($fourth) > 7) echo $fourth[count($fourth) - 1]; ?>",
+        "school" : "<?php if(count($fourth) > 6) echo $fourth[7]; ?>",
+        "contact" : "<?php echo $fourth[4]; if($fourth[6] != null) echo ' '.$fourth[6]; ?>", 
         "value": "<?php echo $fourth[1] ?>",
         "isMatched": "Add as match",
     },
     {
         "title": "<?php echo $fifth[2].' '.$fifth[3] ?>",
-        "color": "<?php echo implode($fifth) ?>",
+        "bio": "<?php if(count($fifth) > 7) echo $fifth[count($fifth) - 1]; ?>",
+        "school" : "<?php if(count($fifth) > 6) echo $fifth[7]; ?>",
+        "contact" : "<?php echo $fifth[4]; if($fifth[6] != null) echo ' '.$fifth[6]; ?>", 
         "value": "<?php echo $fifth[1] ?>",
         "isMatched": "Add as match",
     }
@@ -333,11 +408,28 @@ let createTaskCard = (task) => {
     title.className = 'card-title';
 
     let bRow = document.createElement('div')
-    bRow.className = 'row justify-content-md-center';
+    bRow.className = 'row justify-content-md-left';
+
+    let cRow = document.createElement('div')
+    cRow.className = 'row justify-content-md-left';
+
+    let col1 = document.createElement('col');
+    col1.className = 'col-sm';
+
+    let col2 = document.createElement('col');
+    col2.className = 'col-sm';
 
     let color = document.createElement('div');
-    color.innerText = task.color;
+    color.innerText = task.bio;
     color.className = 'card-color';
+
+    let contact = document.createElement('div');
+    contact.innerText = task.contact;
+    contact.className = "text";
+
+    let school = document.createElement('div');
+    school.innerText = task.school;
+    school.className = "text";
 
     // Create a form synamically
     var wrapper = document.createElement('div');
@@ -375,9 +467,14 @@ let createTaskCard = (task) => {
 
     cardBody.appendChild(title);
     cardBody.appendChild(bRow);
+    cardBody.appendChild(cRow);
     wrapper.appendChild(form);
     cardBody.appendChild(wrapper);
-    bRow.appendChild(color);
+    col1.appendChild(school);
+    col2.appendChild(color);
+    bRow.appendChild(col1);
+    bRow.appendChild(col2);
+    cRow.appendChild(contact);
     card.appendChild(cardBody);
     cardContainer.appendChild(card);
 

@@ -507,7 +507,7 @@
                     </thead>
             <tbody>
             <tr>
-            <td><input type="radio" value="1" name="interest2"/></td>
+            <td><input type="radio" value="1" name="interest3"/></td>
             <td><input type="radio" value="2" name="interest3"/></td>
             <td><input type="radio" value="3" name="interest3"/></td>
             <td><input type="radio" value="4" name="interest3"/></td>
@@ -584,7 +584,7 @@
         <p>In a short response please provide any additional information you would like people to know about you. All potential mentor/mentee matches will be able to see these biographies, and for many, will be a great way to get to know potential matches. Please consider taking your time to carefully craft a response. </p>
     <div class="form-group">
     <label for="Biography">Biography:</label>
-    <textarea class="form-control" id="Biography" rows="7"></textarea>
+    <textarea class="form-control" id="biography" name="biography" rows="7"></textarea>
   </div>
     
 <!-- Sign-Up Button -->

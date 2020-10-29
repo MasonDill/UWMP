@@ -5,7 +5,9 @@ $user = $_POST["username"];
 $matchUser = $_POST["matchUsername"];
 $message;
 $matNum = '';
+$matNum2 = '';
 $val= $matchUser;
+$val2 = $user;
 $kry = "SELECT * FROM matches where username='$user'";
 $cute = $conn->query($kry);
 while($row = $cute->fetch_array(MYSQLI_NUM))
@@ -38,7 +40,46 @@ while($row = $cute->fetch_array(MYSQLI_NUM))
   }
 }
 
+$cry = "SELECT * FROM matches where username='$matchUser'";
+$kute = $conn->query($cry);
+while($row = $kute->fetch_array(MYSQLI_NUM))
+{
+  if(strcmp($row[1], $user) == 0)
+  {
+    $matNum2 = 'Match1';
+    $val2 = '';
+  }
+  else if(strcmp($row[2], $user) == 0)
+  {
+    $matNum2 = 'Match2';
+    $val2 = '';
+  }
+  else if(strcmp($row[3], $user) == 0)
+  {
+    $matNum2 = 'Match3';
+    $val2 = '';
+  }
+  else
+  {
+    if($row[1] == null)
+      $matNum2 = 'Match1';
+    else if($row[2] == null)
+      $matNum2 = 'Match2';
+    else if($row[3] == null)
+      $matNum2 = 'Match3';
+    else
+      $matNum = "LIST IS FULL";
+  }
+}
+
 $qry = "UPDATE matches set ".$matNum."='".$val."' where username='$user'";
+    if($rslt = $conn->query($qry)){
+      $message = "Your information is updating...";
+    }
+    else
+      $message = "You already have 3 matches, please remove one";
+
+$qry = "UPDATE matches set ".$matNum2."='".$val2."' where username='$matchUser'";
     if($rslt = $conn->query($qry)){
       $message = "Your information is updating...";
     }

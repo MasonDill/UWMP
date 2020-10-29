@@ -43,5 +43,4 @@ function drawContacts(){
 echo "</table>";
 }
 
-
 ?>

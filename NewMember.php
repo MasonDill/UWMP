@@ -7,10 +7,18 @@ $last = $_POST["lname"];
 $email = $_POST["email"];
 $role =  $_POST["role"];
 $phone = $_POST["phone"];
+$idd = 0;
 $message;
 
-$sql =  "INSERT INTO contacts (ID, username, first, last, email, Role, phone)
-VALUES(0, '$user', '$first', '$last', '$email', '$role', '$phone')";
+$check = "SELECT * from contacts where username='$user'";
+if($retult = $conn->query($check))
+{
+	if($row = $retult->fetch_array(MYSQLI_NUM))
+		$idd = $row[0];
+}
+
+$sql =  "REPLACE INTO contacts (ID, username, first, last, email, Role, phone)
+VALUES($idd, '$user', '$first', '$last', '$email', '$role', '$phone')";
 
 $sql2 =  "INSERT INTO matches (Username, Match1, Match2, Match3)
 VALUES('$user', '', '', '')";

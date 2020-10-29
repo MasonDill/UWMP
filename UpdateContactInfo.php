@@ -31,13 +31,15 @@ $in3 = $_POST["interest3"];
 $in4 = $_POST["interest4"];
 $in5 = $_POST["interest5"];
 
+$bio = $_POST["biography"];
+
 $message = "nothing right now";
 
 $qry = "SELECT * FROM contact_info WHERE username='$user'";
     $rslt = $conn->query($qry);
 if($row = $rslt -> fetch_array(MYSQLI_NUM))
 {
-$sql =  "REPLACE INTO contact_info SET username = '$row[0]', school = '$schl', schoolPref = $schlPref, takeAway = '$tA', organizations = '$org', location = '$lct', musicPref = '$mP', personality = '$p', interest1 = $in1, interest2 = $in2,interest3 = $in3, interest4 = $in4, interest5 = $in5";
+$sql =  "REPLACE INTO contact_info SET username = '$row[0]', school = '$schl', schoolPref = $schlPref, takeAway = '$tA', organizations = '$org', location = '$lct', musicPref = '$mP', personality = '$p', interest1 = $in1, interest2 = $in2,interest3 = $in3, interest4 = $in4, interest5 = $in5, Bio='$bio'";
 
 if ($conn->query($sql) === TRUE) {
   $message = "Your information is updating...";
@@ -102,7 +104,7 @@ if ($conn->query($sql) === TRUE) {
 
 		<script type="text/javascript">
     	window.onload=function(){
-        var auto = setTimeout(function(){ submitform(); }, 50);
+        var auto = setTimeout(function(){ submitform(); }, 20);
 
         function submitform(){
           document.forms["myForm"].submit();
