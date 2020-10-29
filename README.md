@@ -3,7 +3,7 @@
 ## How to Register to become a Pitt Mentor or Mentee
 1. Navigate to Pitt University-Wide Mentorship Program Landing Page
 2. Sign up and create an account using the links for "Freshman Sign-up Form" or "Become a Mentor Today" sign-up forms
-3.Complete the questionnaire by answering the personal questions
+3. Complete the questionnaire by answering the personal questions
 4. Navigate back to the landing page and view matches under the "See Your Matches" tab
 5. Completion of this step will automatically generate and display potential matches. From here, you can select from the possible mentor/mentee options
 6. At any time, you can return to the landing page by clicking the "Pitt University-Wide Mentorship Program" tab in the upper left hand corner
