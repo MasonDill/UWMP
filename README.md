@@ -12,17 +12,17 @@
 1. Downloaded Landing Page bootstrap zip-file
 2. First step was to change all preset color pallets into the University of Pittsburgh's Hex colors HEX:#003594 and HEX:#FFB81C
 3. About (Lines 55-63):
-    -Group project pitch and general background information about the end product was included to give viewers pre-cursor information
-    -Picture of current Pitt mentors was included to enhance the design of the webpage, and prevent it from being plain text all the way through
+    * Group project pitch and general background information about the end product was included to give viewers pre-cursor information
+    * Picture of current Pitt mentors was included to enhance the design of the webpage, and prevent it from being plain text all the way through
 4. Benefits (Lines 67-83):
-    -Research into the benefits of both being a mentor and a mentee were included in this section
-    -Overall, goal was to provide potential applicants with the potential positive takeaways they can have as a result of this program
-    -Benefits are surrounded by a Pitt Gold box to highlight their importance and encourage students to consider the program both for their social, and educational experience
+    * Research into the benefits of both being a mentor and a mentee were included in this section
+    * Overall, goal was to provide potential applicants with the potential positive takeaways they can have as a result of this program
+    * Benefits are surrounded by a Pitt Gold box to highlight their importance and encourage students to consider the program both for their social, and educational experience
 5. Form Links (Lines 89-128):
-    -"Freshman Sign-up Form" and "Become A Mentor Today" links both take the potential applicants to the registration form
-    -Here, they provide information such as their name and email address in order to be placed into the system
-    -Once completed, registered applicants can sign in under the "See Your Matches" window using their registered Pitt username for reference
-    -Initially, they will see zero matches under their account because they have not yet completed the questionnaire form
+    * "Freshman Sign-up Form" and "Become A Mentor Today" links both take the potential applicants to the registration form
+    * Here, they provide information such as their name and email address in order to be placed into the system
+    * Once completed, registered applicants can sign in under the "See Your Matches" window using their registered Pitt username for reference
+    * Initially, they will see zero matches under their account because they have not yet completed the questionnaire form
 
 ## Construction of Questionnaire (Questionnaire.html)
 1. This questionnaire was modeled after a Google Form that was designed to receive personal information regarding interests of mentor and mentee applicants
@@ -33,17 +33,17 @@
 6. Questions such as bio, name, and email will be used to get in contact with any matches you form, and better get to know people
 
 ## Intentions
--This program seeks to help all incoming students during the transition to the college environment. Transitioning to college is a big challenge for freshmen every year
-    -Sometimes just having a mentor to guide them through the first few months can make all the difference in making them feel comfortable in their new environment
--The goal of this program is to pair incoming freshmen with volunteer upperclassmen who will act as guides for first year students
-    -Incoming first year students will answer a series of personality questions, beginning with broad questions and narrowing down to specific interests and passions that they hope to explore during their time at Pitt
-    -The database will allow the student to choose traits and qualities that they hope to find in a mentor, such as their academic school, class schedule, and extracurricular interests
-    -The database will use these responses to find a sufficient personality match and initiate communication between the students and their mentors
+* This program seeks to help all incoming students during the transition to the college environment. Transitioning to college is a big challenge for freshmen every year
+    * Sometimes just having a mentor to guide them through the first few months can make all the difference in making them feel comfortable in their new environment
+* The goal of this program is to pair incoming freshmen with volunteer upperclassmen who will act as guides for first year students
+    * Incoming first year students will answer a series of personality questions, beginning with broad questions and narrowing down to specific interests and passions that they hope to explore during their time at Pitt
+    * The database will allow the student to choose traits and qualities that they hope to find in a mentor, such as their academic school, class schedule, and extracurricular interests
+    * The database will use these responses to find a sufficient personality match and initiate communication between the students and their mentors
     
 ## Changes
--Initially we were hoping to match people based on personal short answer responses. We quickly realized that this would be a burden on both the matching process and our coding team. To solve this, we substituted these short answer questions for multiple choice and linear scale ones
--We decided that adding a short bio at the end would suffice for short answer questions and wouldn’t overburden the matching process
--We also decided that instead of overwhelming mentors with numerous mentees, we would instead limit each mentor to a maximum of 3 mentees. This allows mentors to focus on a few students instead of dividing their attention between many mentees
+* Initially we were hoping to match people based on personal short answer responses. We quickly realized that this would be a burden on both the matching process and our coding team. To solve this, we substituted these short answer questions for multiple choice and linear scale ones
+* We decided that adding a short bio at the end would suffice for short answer questions and wouldn’t overburden the matching process
+* We also decided that instead of overwhelming mentors with numerous mentees, we would instead limit each mentor to a maximum of 3 mentees. This allows mentors to focus on a few students instead of dividing their attention between many mentees
 
 ## Bootstrap Copyright Information
 
