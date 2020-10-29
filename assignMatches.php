@@ -2,27 +2,49 @@
 include_once 'dbh.php';
 
 $user = $_POST["username"];
-$first = $_POST["fname"];
-$last = $_POST["lname"];
-$email = $_POST["email"];
-$role =  $_POST["role"];
-$phone = $_POST["phone"];
+$matchUser = $_POST["matchUsername"];
 $message;
-
-$sql =  "INSERT INTO contacts (ID, username, first, last, email, Role, phone)
-VALUES(0, '$user', '$first', '$last', '$email', '$role', '$phone')";
-
-$sql2 =  "INSERT INTO matches (Username, Match1, Match2, Match3)
-VALUES('$user', '', '', '')";
-
-$sql3 =  "INSERT INTO contact_info (username, school, schoolPref, takeAway, organizations, location, musicPref, personality, interest1, interest2, interest3, interest4, interest5)
-VALUES('$user', '', '0', '', '', '', '', '', '0', '0', '0', '0', '0')";
-
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3)) {
-  $message = "Welcome to the UWMP";
-} else {
-  $message = "Error: " . $sql . "<br>" . $conn->error;
+$matNum = '';
+$val= $matchUser;
+$kry = "SELECT * FROM matches where username='$user'";
+$cute = $conn->query($kry);
+while($row = $cute->fetch_array(MYSQLI_NUM))
+{
+  if(strcmp($row[1], $matchUser) == 0)
+  {
+    $matNum = 'Match1';
+    $val = '';
+  }
+  else if(strcmp($row[2], $matchUser) == 0)
+  {
+    $matNum = 'Match2';
+    $val = '';
+  }
+  else if(strcmp($row[3], $matchUser) == 0)
+  {
+    $matNum = 'Match3';
+    $val = '';
+  }
+  else
+  {
+    if($row[1] == null)
+      $matNum = 'Match1';
+    else if($row[2] == null)
+      $matNum = 'Match2';
+    else if($row[3] == null)
+      $matNum = 'Match3';
+    else
+      $matNum = "LIST IS FULL";
+  }
 }
+
+$qry = "UPDATE matches set ".$matNum."='".$val."' where username='$user'";
+    if($rslt = $conn->query($qry)){
+      $message = "Your information is updating...";
+    }
+    else
+      $message = "You already have 3 matches, please remove one";
+//}
 ?>
 
 <html>
@@ -59,7 +81,7 @@ if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query(
             </form>
           </li>
           <li class="nav-item active">
-            <A class="nav-link" href="#">Sign Up
+            <A class="nav-link" href="#">Change info
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -72,15 +94,16 @@ if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query(
   		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo rand(60, 99) ?>%"></div>
 	</div>
 
-  <form name="myForm" id="myForm" action="viewMatches.php" method="POST">
+  <form name="myForm" id="myForm" action="findMatches.php" method="POST">
     <p>
         <input type="hidden" id="username" name="username" value="<?php echo $user ?>" />
+        <input type="hidden" id="indexes" name="indexes" value="0" />
     </p>
 	</form>
 
 		<script type="text/javascript">
     	window.onload=function(){
-        var auto = setTimeout(function(){ submitform(); }, 600);
+        var auto = setTimeout(function(){ submitform(); }, 20);
 
         function submitform(){
           document.forms["myForm"].submit();

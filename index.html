@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -35,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#Bot">Information</a>
+            <a class="nav-link" href="#Bot">Participate</a>
           </li>
         </ul>
       </div>
@@ -90,7 +89,7 @@
             <p class="card-text">Are you a freshman? Click here to be matched with an upperclassman student mentor.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Sign Up!</a>
+            <a href="SignUp.php" class="btn btn-primary btn-sm">Sign Up!</a>
           </div>
         </div>
       </div>
@@ -102,7 +101,7 @@
             <p class="card-text">This program is open to all upperclassmen Pitt students looking for an opportunity to connect and provide assistance to incoming freshman.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Sign Up!</a>
+            <a href="SignUp.php" class="btn btn-primary btn-sm">Sign Up!</a>
           </div>
         </div>
       </div>
@@ -112,10 +111,33 @@
           <div class="card-body">
             <h2 class="card-title">See Your Matches</h2>
             <p class="card-text">Follow the link below and input your name to view current mentor and their contact information.</p>
+            
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">View Status</a>
-          </div>
+          <div class="row">
+            <div class="col-sm">
+            <button class="btn btn-primary btn-sm" type="button" autocapitalize="none" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Search
+              </button>
+            </div>
+
+              <form action="ViewMatches.php" method="post">
+                <div class="form-group">
+                <div class="collapse" id="collapseExample">
+              <div class="col-sm">
+                
+                  <label for="usename">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+                  <small>Please use your Pitt Username</small>
+                
+              </div>
+              <div class="col-sm justify-content-md-right">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+                </div>
+                </div>
+              </form>
+            </div>
         </div>
       </div>
       <!-- /.col-md-4 -->

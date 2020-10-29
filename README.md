@@ -1,61 +1,26 @@
-# [Start Bootstrap - Small Business](https://startbootstrap.com/templates/small-business/)
+Intentions:
 
-[Small Business](https://startbootstrap.com/templates/small-business/) is a responsive marketing landing page template for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/).
 
-## Preview
 
-[![Small Business Preview](https://startbootstrap.com/assets/img/screenshots/templates/small-business.png)](https://startbootstrap.github.io/startbootstrap-small-business/)
+* This program seeks to help all incoming students during the transition to the college environment. Transitioning to college is a big challenge for freshmen every year. 
+  * Sometimes just having a mentor to guide them through the first few months can make all the difference in making them feel comfortable in their new environment. 
+* The goal of this program is to pair incoming freshmen with volunteer upperclassmen who will act as guides for first year students.
+  * Incoming first year students will answer a series of personality questions, beginning with broad questions and narrowing down to specific interests and passions that they hope to explore during their time at Pitt. 
+  * The database will allow the student to choose traits and qualities that they hope to find in a mentor, such as their academic school, class schedule, and extracurricular interests. 
+  * The database will use these responses to find a sufficient personality match and initiate communication between the students and their mentors.
 
-**[View Live Preview](https://startbootstrap.github.io/startbootstrap-small-business/)**
+History:
 
-## Status
+* We made it
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/StartBootstrap/startbootstrap-small-business/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-small-business.svg)](https://www.npmjs.com/package/startbootstrap-small-business)
-[![Build Status](https://travis-ci.org/StartBootstrap/startbootstrap-small-business.svg?branch=master)](https://travis-ci.org/StartBootstrap/startbootstrap-small-business)
-[![dependencies Status](https://david-dm.org/StartBootstrap/startbootstrap-small-business/status.svg)](https://david-dm.org/StartBootstrap/startbootstrap-small-business)
-[![devDependencies Status](https://david-dm.org/StartBootstrap/startbootstrap-small-business/dev-status.svg)](https://david-dm.org/StartBootstrap/startbootstrap-small-business?type=dev)
+Changes:
 
-## Download and Installation
+* Initially we were hoping to match people based on personal short answer responses. We quickly realized that this would be a burden on both the matching process and our coding team. To solve this, we substituted these short answer questions for multiple choice and linear scale ones. 
 
-To begin using this template, choose one of the following options to get started:
+* We decided that adding a short bio at the end would suffice for short answer questions and wouldn’t overburden the matching process. 
 
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/templates/small-business/)
-* Install via npm: `npm i startbootstrap-small-business`
-* Clone the repo: `git clone https://github.com/StartBootstrap/startbootstrap-small-business.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/StartBootstrap/startbootstrap-small-business)
+* We also decided that instead of overwhelming mentors with numerous mentees, we would instead limit each mentor to a maximum of 3 mentees. This allows mentors to focus in on a few students instead of dividing their attention between many mentees. 
 
-## Usage
+* We decided 
 
-### Basic Usage
-
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
-
-### Advanced Usage
-
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
-
-You must have npm and Gulp installed globally on your machine in order to use these features.
-
-## Bugs and Issues
-
-Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-small-business/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](https://startbootstrap.com/templates/small-business/).
-
-## About
-
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
-
-* <https://startbootstrap.com>
-* <https://twitter.com/SBootstrap>
-
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**.
-
-* <http://davidmiller.io>
-* <https://twitter.com/davidmillerskt>
-* <https://github.com/davidtmiller>
-
-Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2020 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-small-business/blob/gh-pages/LICENSE) license.
+ 

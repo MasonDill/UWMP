@@ -2,26 +2,48 @@
 include_once 'dbh.php';
 
 $user = $_POST["username"];
-$first = $_POST["fname"];
-$last = $_POST["lname"];
-$email = $_POST["email"];
-$role =  $_POST["role"];
-$phone = $_POST["phone"];
-$message;
+$schl = $_POST["school"];
+$schlPref = $_POST["schoolPref"];
+$takeAw = $_POST["takeAway"];
+$tA = "";
+foreach ($takeAw as $tk){ 
+    $tA = $tA.$tk.",";
+}
+$orgn =  $_POST["organizations"];
+$org = "";
+foreach ($orgn as $og){ 
+    $org = $org.$og.",";
+}
+$lct = $_POST["location"];
+$mPref = $_POST["musicPref"];
+$mP = "";
+foreach ($mPref as $mr){ 
+    $mP = $mP.$mr.",";
+}
+$psn = $_POST["personality"];
+$p = "";
+foreach ($psn as $pn){ 
+    $p = $p.$pn.",";
+}
+$in1 = $_POST["interest1"];
+$in2 = $_POST["interest2"];
+$in3 = $_POST["interest3"];
+$in4 = $_POST["interest4"];
+$in5 = $_POST["interest5"];
 
-$sql =  "INSERT INTO contacts (ID, username, first, last, email, Role, phone)
-VALUES(0, '$user', '$first', '$last', '$email', '$role', '$phone')";
+$message = "nothing right now";
 
-$sql2 =  "INSERT INTO matches (Username, Match1, Match2, Match3)
-VALUES('$user', '', '', '')";
+$qry = "SELECT * FROM contact_info WHERE username='$user'";
+    $rslt = $conn->query($qry);
+if($row = $rslt -> fetch_array(MYSQLI_NUM))
+{
+$sql =  "REPLACE INTO contact_info SET username = '$row[0]', school = '$schl', schoolPref = $schlPref, takeAway = '$tA', organizations = '$org', location = '$lct', musicPref = '$mP', personality = '$p', interest1 = $in1, interest2 = $in2,interest3 = $in3, interest4 = $in4, interest5 = $in5";
 
-$sql3 =  "INSERT INTO contact_info (username, school, schoolPref, takeAway, organizations, location, musicPref, personality, interest1, interest2, interest3, interest4, interest5)
-VALUES('$user', '', '0', '', '', '', '', '', '0', '0', '0', '0', '0')";
-
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3)) {
-  $message = "Welcome to the UWMP";
+if ($conn->query($sql) === TRUE) {
+  $message = "Your information is updating...";
 } else {
   $message = "Error: " . $sql . "<br>" . $conn->error;
+}
 }
 ?>
 
@@ -52,14 +74,14 @@ if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query(
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form method="post" action="viewMatches.php">
-            <input type="hidden" name="username" class="username" id="username" value="<?php  echo $user; ?>">
+            <input type="hidden" name="username" class="username" id="username" value="<?php  echo $row[0]; ?>">
             <button class="matchesBtn" type="submit" outline="none" id="sbmtbtn" sytle="" name="sbmtbtn"><A class="nav-link">Matches
               <span class="sr-only">(current)</span>
             </a></button>
             </form>
           </li>
           <li class="nav-item active">
-            <A class="nav-link" href="#">Sign Up
+            <A class="nav-link" href="#">Questionnaire
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -80,7 +102,7 @@ if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query(
 
 		<script type="text/javascript">
     	window.onload=function(){
-        var auto = setTimeout(function(){ submitform(); }, 600);
+        var auto = setTimeout(function(){ submitform(); }, 50);
 
         function submitform(){
           document.forms["myForm"].submit();

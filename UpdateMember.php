@@ -9,19 +9,17 @@ $role =  $_POST["role"];
 $phone = $_POST["phone"];
 $message;
 
-$sql =  "INSERT INTO contacts (ID, username, first, last, email, Role, phone)
-VALUES(0, '$user', '$first', '$last', '$email', '$role', '$phone')";
+$qry = "SELECT * FROM contacts WHERE username='$user'";
+    $rslt = $conn->query($qry);
+if($row = $rslt -> fetch_array(MYSQLI_NUM))
+{
+$sql =  "REPLACE INTO contacts SET id = '$row[0]', username = '$row[1]', first = '$first', last = '$last', email = '$email', role = '$role', phone = '$phone'";
 
-$sql2 =  "INSERT INTO matches (Username, Match1, Match2, Match3)
-VALUES('$user', '', '', '')";
-
-$sql3 =  "INSERT INTO contact_info (username, school, schoolPref, takeAway, organizations, location, musicPref, personality, interest1, interest2, interest3, interest4, interest5)
-VALUES('$user', '', '0', '', '', '', '', '', '0', '0', '0', '0', '0')";
-
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3)) {
-  $message = "Welcome to the UWMP";
+if ($conn->query($sql) === TRUE) {
+  $message = "Your information is updating...";
 } else {
   $message = "Error: " . $sql . "<br>" . $conn->error;
+}
 }
 ?>
 
@@ -52,14 +50,14 @@ if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query(
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <form method="post" action="viewMatches.php">
-            <input type="hidden" name="username" class="username" id="username" value="<?php  echo $user; ?>">
+            <input type="hidden" name="username" class="username" id="username" value="<?php  echo $row[1]; ?>">
             <button class="matchesBtn" type="submit" outline="none" id="sbmtbtn" sytle="" name="sbmtbtn"><A class="nav-link">Matches
               <span class="sr-only">(current)</span>
             </a></button>
             </form>
           </li>
           <li class="nav-item active">
-            <A class="nav-link" href="#">Sign Up
+            <A class="nav-link" href="#">Change info
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -84,6 +82,7 @@ if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query(
 
         function submitform(){
           document.forms["myForm"].submit();
+          setTimeout(function(){ window.close(); }, 100)
         }
     }
 </script>

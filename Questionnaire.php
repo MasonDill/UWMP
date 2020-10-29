@@ -1,3 +1,8 @@
+<?php
+    include_once 'dbh.php';
+    $user = $_GET["data"];
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,50 +20,21 @@
     
 <!-- Introduction -->
   <h1>Interests</h1>
+  <small>*Please provide at least one answer for every question</small>
         <p>The goal of this Project is to pair incoming freshman with upperclassmen of similar interests that would act as a guide for first year students. The program would function on a volunteer basis. The answers to this form are completely anonymous and your information will only be used in this class. There are no responsibilities attached to this survey, we are only using the data.</p>
     
 <!-- Mentor or Mentee -->
     
-<form action="NewMember.php" method="post">
+<form action="UpdateContactInfo.php" method="post">
   <fieldset class="form-group">
-    <div class="row">
-      <legend class="form-label col-sm-10 pt-0">Mentor or Mentee?</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question1" id="Mentor" value="Mentor">
-          <label class="form-check-label" for="Mentor">
-            Mentor - I'm an upperclassman
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question1" id="Mentee" value="Mentee">
-          <label class="form-check-label" for="Mentee">
-            Mentee - I'm new to Pitt
-          </label>
-        </div>
+    <div class="form-group">
+    <div class="row justify-content-md-left">
+      <div class="col col-lg-2">
+      <input type="hidden" class="form-control" id="username" placeholder="Enter Username" name="username" value="<?php echo $user ?>">
       </div>
-    </div>
-  </fieldset> 
-    
-<!-- Name and information -->
-  <div class="form-group">
-    <label for="inputusername">Pitt Username</label>
-    <input type="text" class="form-control" id="inputusername" placeholder="abc123">
-  </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputfname">First Name</label>
-      <input type="text" class="form-control" id="inputfname" placeholder="First Name">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputlname">Last Name</label>
-      <input type="text" class="form-control" id="inputlname" placeholder="Last Name">
+
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputphone">Phone *optional*</label>
-    <input type="text" class="form-control" id="inputphone" placeholder="(xxx)xxx-xxxx">
-  </div>  
     
 <!-- What School are you apart of -->
     <fieldset class="form-group">
@@ -66,91 +42,91 @@
       <legend class="form-label col-sm-10 pt-0">What school are you apart of? </legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Dietrich" value="Dietrich">
+          <input class="form-check-input" type="radio" name="school" id="Dietrich" value="Dietrich">
           <label class="form-check-label" for="Dietrich">
             Dietrich School of Arts and Sciences
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Business" value="Business">
+          <input class="form-check-input" type="radio" name="school" id="Business" value="Business">
           <label class="form-check-label" for="Business">
             Business
           </label>
           </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Computing" value="Computing">
+          <input class="form-check-input" type="radio" name="school" id="Computing" value="Computing">
           <label class="form-check-label" for="Computing">
             Computing and Information
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Dental" value="Dental">
+          <input class="form-check-input" type="radio" name="school" id="Dental" value="Dental">
           <label class="form-check-label" for="Dental">
             Dental Medicine
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Education" value="Education">
+          <input class="form-check-input" type="radio" name="school" id="Education" value="Education">
           <label class="form-check-label" for="Education">
             Education
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Engineering" value="Engineering">
+          <input class="form-check-input" type="radio" name="school" id="Engineering" value="Engineering">
           <label class="form-check-label" for="Engineering">
             Swanson School of Engineering
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="General" value="General">
+          <input class="form-check-input" type="radio" name="school" id="General" value="General">
           <label class="form-check-label" for="General">
             General Studies
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Health" value="Health">
+          <input class="form-check-input" type="radio" name="school" id="Health" value="Health">
           <label class="form-check-label" for="Health">
             Health and Rehabilitation Sciences
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Law" value="Law">
+          <input class="form-check-input" type="radio" name="school" id="Law" value="Law">
           <label class="form-check-label" for="Law">
             Law
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Medicine" value="Medicine">
+          <input class="form-check-input" type="radio" name="school" id="Medicine" value="Medicine">
           <label class="form-check-label" for="Medicine">
             Medicine
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Nursing" value="Nursing">
+          <input class="form-check-input" type="radio" name="school" id="Nursing" value="Nursing">
           <label class="form-check-label" for="Nursing">
             Nursing
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Pharmacy" value="Pharmacy">
+          <input class="form-check-input" type="radio" name="school" id="Pharmacy" value="Pharmacy">
           <label class="form-check-label" for="Pharmacy">
             Pharmacy
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Affairs" value="Affairs">
+          <input class="form-check-input" type="radio" name="school" id="Affairs" value="Affairs">
           <label class="form-check-label" for="Affairs">
             Public and International Affairs
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="PublicHealth" value="PublicHealth">
+          <input class="form-check-input" type="radio" name="school" id="PublicHealth" value="PublicHealth">
           <label class="form-check-label" for="PublicHealth">
             Public Health
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question2" id="Social" value="Social">
+          <input class="form-check-input" type="radio" name="school" id="Social" value="Social">
           <label class="form-check-label" for="Social">
             Social Work
           </label>    
@@ -165,19 +141,19 @@
       <legend class="form-label col-sm-10 pt-0">Would you like to be paired with someone within your school/major?</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question3" id="WithinSchoolYes" value="WithinSchoolYes">
+          <input class="form-check-input" type="radio" name="schoolPref" id="WithinSchoolYes" value="1">
           <label class="form-check-label" for="WithinSchoolYes">
             Yes
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question3" id="WithinSchoolNo" value="WithinSchoolNo">
+          <input class="form-check-input" type="radio" name="schoolPref" id="WithinSchoolNo" value="2">
           <label class="form-check-label" for="WithinSchoolNo">
             No - I would like to meet people outside my major
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question3" id="WithinSchoolDoesntMatter" value="WithinSchoolDoesntMatter">
+          <input class="form-check-input" type="radio" name="schoolPref" id="WithinSchoolDoesntMatter" value="3">
           <label class="form-check-label" for="WithinSchoolDoesntMatter">
             Doesn't matter
           </label>
@@ -192,19 +168,19 @@
       <legend class="form-label col-sm-10 pt-0">Which of these things do you hope to take away from your extracurricular activities?</legend>
       <div class="col-sm-10">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question4" value="MeetPeople" id="MeetPeople">
+            <input class="form-check-input" type="checkbox" name="takeAway[]" value="MeetPeople" id="MeetPeople">
             <label class="form-check-label" for="MeetPeople">
                 Meet new people
             </label>
           </div> 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question4" value="LearnSkills" id="LearnSkills">
+            <input class="form-check-input" type="checkbox" name="takeAway[]" value="LearnSkills" id="LearnSkills">
             <label class="form-check-label" for="LearnSkills">
                Get better at, or learn a skill 
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question4" value="Hobby" id="Hobby">
+            <input class="form-check-input" type="checkbox" name="takeAway[]" value="Hobby" id="Hobby">
             <label class="form-check-label" for="Hobby">
                 Just for fun/hobby
             </label>
@@ -219,61 +195,61 @@
       <legend class="form-label col-sm-10 pt-0">Which of these clubs/organizations would you be interested in?</legend>
       <div class="col-sm-10">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="Blue&Gold" id="Blue&Gold">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="Blue&Gold" id="Blue&Gold">
             <label class="form-check-label" for="Blue&Gold">
                 Blue and Gold Society
             </label>
           </div> 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="Ski/Snowboard" id="Ski/Snowboard">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="Ski/Snowboard" id="Ski/Snowboard">
             <label class="form-check-label" for="Ski/Snowboard">
                Ski and Snowboard Club 
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="Intramurals" id="Intramurals">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="Intramurals" id="Intramurals">
             <label class="form-check-label" for="Intramurals">
                 Intramural Sports
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="SGB" id="SGB">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="SGB" id="SGB">
             <label class="form-check-label" for="SGB">
                 Student Government
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="MathClub" id="MathClub">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="MathClub" id="MathClub">
             <label class="form-check-label" for="MathClub">
                 Math Club
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="PittBand" id="PittBand">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="PittBand" id="PittBand">
             <label class="form-check-label" for="PittBand">
                 Pitt Band
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="ServiceClub" id="ServiceClub">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="ServiceClub" id="ServiceClub">
             <label class="form-check-label" for="ServiceClub">
                 Service-related club
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="GreekLife" id="GreekLife">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="GreekLife" id="GreekLife">
             <label class="form-check-label" for="GreekLife">
                 Greek Life
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="Abroad" id="Abroad">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="Abroad" id="Abroad">
             <label class="form-check-label" for="Abroad">
                 Study Abroad
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question5" value="NoneOfTheAbove" id="NoneOfTheAbove">
+            <input class="form-check-input" type="checkbox" name="organizations[]" value="NoneOfTheAbove" id="NoneOfTheAbove">
             <label class="form-check-label" for="NoneOfTheAbove">
                 None of the above
             </label>
@@ -288,37 +264,37 @@
       <legend class="form-label col-sm-10 pt-0">Where are you from?</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question6" id="PA-Local" value="PA-Local">
+          <input class="form-check-input" type="radio" name="location" id="PA-Local" value="PA-Local">
           <label class="form-check-label" for="PA-Local">
             PA, Local
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question6" id="PA-OutsidePhilly" value="PA-OutsidePhilly">
+          <input class="form-check-input" type="radio" name="location" id="PA-OutsidePhilly" value="PA-OutsidePhilly">
           <label class="form-check-label" for="PA-OutsidePhilly">
             PA, outside Philadelphia
           </label>
         </div>
           <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question6" id="Philadelphia" value="Philadelphia">
+          <input class="form-check-input" type="radio" name="location" id="Philadelphia" value="Philadelphia">
           <label class="form-check-label" for="Philadelphia">
             PA, actually inside Philadelphia
           </label>
         </div>
           <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question6" id="PA-Other" value="PA-Other">
+          <input class="form-check-input" type="radio" name="location" id="PA-Other" value="PA-Other">
           <label class="form-check-label" for="PA-Other">
             PA, none of the other options
           </label>
         </div>
           <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question6" id="OutsidePA" value="OutsidePA">
+          <input class="form-check-input" type="radio" name="location" id="OutsidePA" value="OutsidePA">
           <label class="form-check-label" for="OutsidePA">
             Outside PA, USA
           </label>
         </div>
           <div class="form-check">
-          <input class="form-check-input" type="radio" name="Question6" id="International" value="International">
+          <input class="form-check-input" type="radio" name="location" id="International" value="International">
           <label class="form-check-label" for="International">
             International Student
           </label>
@@ -333,85 +309,85 @@
       <legend class="form-label col-sm-10 pt-0">What kind of music do you listen to?</legend>
       <div class="col-sm-10">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Hip-Hop" id="Hip-Hop">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Hip-Hop" id="Hip-Hop">
             <label class="form-check-label" for="Hip-Hop">
                 Hip Hop/ Rap
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Rock" id="Rock">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Rock" id="Rock">
             <label class="form-check-label" for="Rock">
                 Rock
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Country" id="Country">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Country" id="Country">
             <label class="form-check-label" for="Country">
                 Country
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Pop" id="Pop">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Pop" id="Pop">
             <label class="form-check-label" for="Pop">
                 Pop
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Indie" id="Indie">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Indie" id="Indie">
             <label class="form-check-label" for="Indie">
                 Indie
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="MusicalTheater" id="MusicalTheater">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="MusicalTheater" id="MusicalTheater">
             <label class="form-check-label" for="MusicalTheater">
                 Musical Theater
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Oldies" id="Oldies">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Oldies" id="Oldies">
             <label class="form-check-label" for="Oldies">
                 The Oldies
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Jazz" id="Jazz">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Jazz" id="Jazz">
             <label class="form-check-label" for="Jazz">
                 Jazz
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Orchestra" id="Orchestra">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Orchestra" id="Orchestra">
             <label class="form-check-label" for="Orchestra">
                 Orchestra
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Fusion" id="Fusion">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Fusion" id="Fusion">
             <label class="form-check-label" for="Fusion">
                 Fusion
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="Punk" id="Punk">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="Punk" id="Punk">
             <label class="form-check-label" for="Punk">
                 Punk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="EDM" id="EDM">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="EDM" id="EDM">
             <label class="form-check-label" for="EDM">
                 EDM/House
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="OtherOption" id="OtherOption">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="OtherOption" id="OtherOption">
             <label class="form-check-label" for="OtherOption">
                 Other
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question7" value="NoPreference" id="NoPreference">
+            <input class="form-check-input" type="checkbox" name="musicPref[]" value="NoPreference" id="NoPreference">
             <label class="form-check-label" for="NoPreference">
                 I don't have a preference
             </label>
@@ -426,25 +402,25 @@
       <legend class="form-label col-sm-10 pt-0">People would describe you as:</legend>
       <div class="col-sm-10">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question8" value="Quiet" id="Quiet">
+            <input class="form-check-input" type="checkbox" name="personality[]" value="Quiet" id="Quiet">
             <label class="form-check-label" for="Quiet">
                 Quiet and keeps to themselves
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question8" value="Talkative" id="Talkative">
+            <input class="form-check-input" type="checkbox" name="personality[]" value="Talkative" id="Talkative">
             <label class="form-check-label" for="Talkative">
                 Talkative and outgoing
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question8" value="GoodStudent" id="GoodStudent">
+            <input class="form-check-input" type="checkbox" name="personality[]" value="GoodStudent" id="GoodStudent">
             <label class="form-check-label" for="GoodStudent">
                 On time with assignments and a good student
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Question8" value="EasyGoing" id="EasyGoing">
+            <input class="form-check-input" type="checkbox" name="personality[]" value="EasyGoing" id="EasyGoing">
             <label class="form-check-label" for="EasyGoing">
                 Easy going and relaxed
             </label>
@@ -461,7 +437,7 @@
             <legend class="form-label col-sm-10 pt-0">I enjoy meeting new people</legend>
             <div class="col-sm-10">
             <div class="form-check">
-                <table class="striped-columns border" style="width:100%; height=100%">
+                <table class="striped-columns" style="width:100%; height=100%">
                     <thead>
                         <tr>
                             <th>Strongly Disagree</th>
@@ -473,11 +449,11 @@
                     </thead>
             <tbody>
             <tr>
-            <td><input type="radio" value="Strongly Disagree" name="NewPeople"/></td>
-            <td><input type="radio" value="Disagree" name="NewPeople"/></td>
-            <td><input type="radio" value="Neutral" name="NewPeople"/></td>
-            <td><input type="radio" value="Agree" name="NewPeople"/></td>
-            <td><input type="radio" value="Strongly Agree" name="NewPeople"/></td>
+            <td><input type="radio" value="1" name="interest1"/></td>
+            <td><input type="radio" value="2" name="interest1"/></td>
+            <td><input type="radio" value="3" name="interest1"/></td>
+            <td><input type="radio" value="4" name="interest1"/></td>
+            <td><input type="radio" value="5" name="interest1"/></td>
             </tr>
             </tbody>
                 </table>
@@ -490,7 +466,7 @@
             <legend class="form-label col-sm-10 pt-0">I spend a lot of time studying or reading</legend>
             <div class="col-sm-10">
             <div class="form-check">
-                <table class="striped-columns border" style="width:100%; height=100%">
+                <table class="striped-columns" style="width:100%; height=100%">
                     <thead>
                         <tr>
                             <th>Strongly Disagree</th>
@@ -502,11 +478,11 @@
                     </thead>
             <tbody>
             <tr>
-            <td><input type="radio" value="Strongly Disagree" name="StudyingRead"/></td>
-            <td><input type="radio" value="Disagree" name="StudyingRead"/></td>
-            <td><input type="radio" value="Neutral" name="StudyingRead"/></td>
-            <td><input type="radio" value="Agree" name="StudyingRead"/></td>
-            <td><input type="radio" value="Strongly Agree" name="StudyingRead"/></td>
+            <td><input type="radio" value="1" name="interest2"/></td>
+            <td><input type="radio" value="2" name="interest2"/></td>
+            <td><input type="radio" value="3" name="interest2"/></td>
+            <td><input type="radio" value="4" name="interest2"/></td>
+            <td><input type="radio" value="5" name="interest2"/></td>
             </tr>
             </tbody>
                 </table>
@@ -519,7 +495,7 @@
             <legend class="form-label col-sm-10 pt-0">I plan to work part time during college</legend>
             <div class="col-sm-10">
             <div class="form-check">
-                <table class="striped-columns border" style="width:100%; height=100%">
+                <table class="striped-columns" style="width:100%; height=100%">
                     <thead>
                         <tr>
                             <th>Strongly Disagree</th>
@@ -531,11 +507,11 @@
                     </thead>
             <tbody>
             <tr>
-            <td><input type="radio" value="Strongly Disagree" name="Worker"/></td>
-            <td><input type="radio" value="Disagree" name="Worker"/></td>
-            <td><input type="radio" value="Neutral" name="Worker"/></td>
-            <td><input type="radio" value="Agree" name="Worker"/></td>
-            <td><input type="radio" value="Strongly Agree" name="Worker"/></td>
+            <td><input type="radio" value="1" name="interest2"/></td>
+            <td><input type="radio" value="2" name="interest3"/></td>
+            <td><input type="radio" value="3" name="interest3"/></td>
+            <td><input type="radio" value="4" name="interest3"/></td>
+            <td><input type="radio" value="5" name="interest3"/></td>
             </tr>
             </tbody>
                 </table>
@@ -548,7 +524,7 @@
             <legend class="form-label col-sm-10 pt-0">I like working on independent projects/ideas</legend>
             <div class="col-sm-10">
             <div class="form-check">
-                <table class="striped-columns border" style="width:100%; height=100%">
+                <table class="striped-columns" style="width:100%; height=100%">
                     <thead>
                         <tr>
                             <th>Strongly Disagree</th>
@@ -560,11 +536,11 @@
                     </thead>
             <tbody>
             <tr>
-            <td><input type="radio" value="Strongly Disagree" name="IndependentProjects"/></td>
-            <td><input type="radio" value="Disagree" name="IndependentProjects"/></td>
-            <td><input type="radio" value="Neutral" name="IndependentProjects"/></td>
-            <td><input type="radio" value="Agree" name="IndependentProjects"/></td>
-            <td><input type="radio" value="Strongly Agree" name="IndependentProjects"/></td>
+            <td><input type="radio" value="1" name="interest4"/></td>
+            <td><input type="radio" value="2" name="interest4"/></td>
+            <td><input type="radio" value="3" name="interest4"/></td>
+            <td><input type="radio" value="4" name="interest4"/></td>
+            <td><input type="radio" value="5" name="interest4"/></td>
             </tr>
             </tbody>
                 </table>
@@ -574,10 +550,10 @@
             <p></p>
             
             <div class="row">
-            <legend class="form-label col-sm-10 pt-0">I watch a lot of Netflix or other TV</legend>
+            <legend class="form-label col-sm-10 pt-0">I watch a lot of interest4 or other TV</legend>
             <div class="col-sm-10">
             <div class="form-check">
-                <table class="striped-columns border" style="width:100%; height=100%">
+                <table class="striped-columns" style="width:100%; height=100%">
                     <thead>
                         <tr>
                             <th>Strongly Disagree</th>
@@ -589,11 +565,11 @@
                     </thead>
             <tbody>
             <tr>
-            <td><input type="radio" value="Strongly Disagree" name="Netflix"/></td>
-            <td><input type="radio" value="Disagree" name="Netflix"/></td>
-            <td><input type="radio" value="Neutral" name="Netflix"/></td>
-            <td><input type="radio" value="Agree" name="Netflix"/></td>
-            <td><input type="radio" value="Strongly Agree" name="Netflix"/></td>
+            <td><input type="radio" value="1" name="interest5"/></td>
+            <td><input type="radio" value="2" name="interest5"/></td>
+            <td><input type="radio" value="3" name="interest5"/></td>
+            <td><input type="radio" value="4" name="interest5"/></td>
+            <td><input type="radio" value="5" name="interest5"/></td>
             </tr>
             </tbody>
                 </table>

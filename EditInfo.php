@@ -1,4 +1,14 @@
-<!doctype html>
+<?php
+    include_once 'dbh.php';
+    $user = $_GET["data"];
+
+    
+    $qry = "SELECT * FROM contacts WHERE username='$user'";
+    $rslt = $conn->query($qry);
+    $row = $rslt -> fetch_array(MYSQLI_NUM);
+
+?>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -8,10 +18,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Sign Up</title>
+    <style type="text/css">
+      .matchesBtn {
+      background: none!important;
+      border: none;
+      text-align: center;
+
+      /*optional*/
+      /*input has OS specific font-family*/
+      color: #ffff;
+      cursor: pointer;
+      padding: 0px 0px;
+      }</style>
+
+    <title>Edit info</title>
   </head>
   <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html" name="#Top">Pitt University-wide Mentorship Program</a>
@@ -20,13 +42,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#Top">Sign Up
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
           <li class="nav-item">
-            <A class="nav-link" HREF="index.html">About
+            <form method="post" action="viewMatches.php">
+            <input type="hidden" name="username" class="username" id="username" value="<?php echo $row[1]; ?>">
+            <button class="matchesBtn" type="submit" outline="none" id="sbmtbtn" sytle="" name="sbmtbtn"><A class="nav-link">Matches
+              <span class="sr-only">(current)</span>
+            </a></button>
+            </form>
+          </li>
+          <li class="nav-item active">
+            <A class="nav-link" href="#">Change info
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -38,15 +63,15 @@
 
 <div class="container-fluid w-75">
 <!-- Username -->
-<form action="NewMember.php" method="post">
+<form action="UpdateMember.php" method="post">
   <div class="form-group">
     <div class="row justify-content-md-left">
       <div class="col col-lg-2">
       <label for="usename">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
-      <small>Please use your Pitt Username</small>
+      <input type="text" readonly class="form-control" id="username" placeholder="<?php  echo $row[1]; ?>" value = "<?php  echo $row[1]; ?>" name="username">
+      <small>*You cannot change this field</small>
       </div>
-
+      
     </div>
   </div>
 
@@ -56,12 +81,12 @@
 
       <div class="col-sm">
       <label for="fname">First Name</label>
-      <input type="text" class="form-control" id="fname" placeholder="Enter Name" name="fname">
+      <input type="text" class="form-control" id="fname" name="fname" value="<?php  echo $row[2]; ?>">
       </div>
 
       <div class="col-sm">
       <label for="lname">Last Name</label>
-      <input type="text" class="form-control" id="lname" placeholder="Enter Name" name="lname">
+      <input type="text" class="form-control" id="lname" name="lname" value="<?php  echo $row[3]; ?>">
       </div>
 
     </div>
@@ -73,12 +98,12 @@
 
       <div class="col-sm">
       <label for="email">Email Address</label>
-      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="text" class="form-control" id="email" name="email" value="<?php  echo $row[4]; ?>">
       </div>
 
       <div class="col-sm">
       <label for="phone">Phone Number</label>
-      <input type="text" class="form-control" id="phone" placeholder="(xxx)xxx-xxxx" name="phone">
+      <input type="text" class="form-control" id="phone" name="phone" value="<?php  echo $row[6]; ?>">
       </div>
 
     </div>

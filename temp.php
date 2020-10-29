@@ -12,33 +12,9 @@
   </head>
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html" name="#Top">Pitt University-wide Mentorship Program</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#Top">Sign Up
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <A class="nav-link" HREF="index.html">About
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <br><br><br>
-
 <div class="container-fluid w-75">
 <!-- Username -->
-<form action="NewMember.php" method="post">
+<form action="NewMember.php" method="get">
   <div class="form-group">
     <div class="row justify-content-md-left">
       <div class="col col-lg-2">
